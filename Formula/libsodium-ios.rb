@@ -1,4 +1,4 @@
-class Libsodium-ios < Formula
+class LibsodiumIos < Formula
   desc "NaCl networking and cryptography library"
   homepage "https://libsodium.org/"
   url "https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz"
