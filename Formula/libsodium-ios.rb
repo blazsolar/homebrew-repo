@@ -43,7 +43,7 @@ class LibsodiumIos < Formula
 
 #    system "make distclean"
     system "./configure", "--host=arm-apple-darwin10", "--prefix=#{prefix}/tmp/ios64"
-    system "make" "install"
+    system "make", "install"
   end
 
   test do
