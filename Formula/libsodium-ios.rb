@@ -41,7 +41,7 @@ class LibsodiumIos < Formula
 #    system "export" "CFLAGS=\"-fembed-bitcode -O2 -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
 #    system "export", "LDFLAGS=\"-fembed-bitcode -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
 
-    system "make distclean"
+#    system "make distclean"
     system "./configure", "--host=arm-apple-darwin10", "--prefix=#{prefix}/tmp/ios64"
     system "make" "install"
   end
