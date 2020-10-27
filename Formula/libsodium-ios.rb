@@ -28,7 +28,7 @@ class LibsodiumIos < Formula
 
   def install
     system "echo", "SDK: Test"
-    system "export", "XCODEDIR=\"$(xcode-select -p)\""
+    system "export", "XCODEDIR=/Applications/Xcode.app/Contents/Developer"
     system "echo", "SDK: Test 2"
     system "export", "BASEDIR=\"${XCODEDIR}/Platforms/iPhoneOS.platform/Developer\""
     system "export", "PATH=\"${BASEDIR}/usr/bin:$BASEDIR/usr/sbin:$PATH\""
