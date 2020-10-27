@@ -27,6 +27,12 @@ class LibsodiumIos < Formula
   end
 
   def install
+    system "export", "XCODEDIR=\"$(xcode-select -p)\""
+    system "export", "BASEDIR=\"${XCODEDIR}/Platforms/iPhoneOS.platform/Developer\""
+    system "export", "PATH=\"${BASEDIR}/usr/bin:$BASEDIR/usr/sbin:$PATH\""
+    system "export", "SDK=\"${BASEDIR}/SDKs/iPhoneOS.sdk\""
+    system "echo", "SDK: ${SDK}"
+
     system "./autogen.sh" if build.head?
 
     ## 64-bit iOS
