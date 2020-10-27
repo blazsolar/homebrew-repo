@@ -38,12 +38,14 @@ class LibsodiumIos < Formula
     system "./autogen.sh" if build.head?
 
     ## 64-bit iOS
-#    system "export" "CFLAGS=\"-fembed-bitcode -O2 -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
-#    system "export", "LDFLAGS=\"-fembed-bitcode -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
+    system "export" "CFLAGS=\"-fembed-bitcode -O2 -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
+    system "export", "LDFLAGS=\"-fembed-bitcode -arch arm64 -isysroot ${SDK} -mios-version-min=9.0.0\""
 
 #    system "make distclean"
     system "./configure", "--host=arm-apple-darwin10", "--prefix=#{prefix}/tmp/ios64"
     system "make", "install"
+
+    system "make", "distclean"
   end
 
   test do
