@@ -18,14 +18,14 @@ class LibsodiumIos < Formula
     sha256 "fc972755eb60f4221d7b32e58fc0f94e99b913fefefc84c4c76dc4bca1c5c445" => :high_sierra
   end
 
-  head do
+#  head do
     url "https://github.com/jedisct1/libsodium.git"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
     depends_on "lipo" => :build
-  end
+ # end
 
   def install
     system "./autogen.sh"
