@@ -19,7 +19,7 @@ class LibsodiumIos < Formula
   end
 
 #  head do
-    url "https://github.com/jedisct1/libsodium.git"
+#    url "https://github.com/jedisct1/libsodium.git"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build
