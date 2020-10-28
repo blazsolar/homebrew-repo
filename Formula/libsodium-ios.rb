@@ -28,6 +28,7 @@ class LibsodiumIos < Formula
  # end
 
   def install
+    ENV.deparallelize
     system "./autogen.sh"
     system "./dist-build/ios.sh"
     system "cp", "libsodium-ios/*", prefix
