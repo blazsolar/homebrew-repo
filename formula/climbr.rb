@@ -1,4 +1,4 @@
-require_relative "lib/custom_download_strategy"
+require_relative "../lib/custom_download_strategy"
 
 class Climbr < Formula
   desc "CLI interface for climbr app"
