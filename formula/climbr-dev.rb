@@ -9,7 +9,7 @@ class Climbr < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/blazsolar/climbr-cli/releases/download/v0.4/climbr-dev.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "d035ef3ef8b8a55abaaa19580d3348e453ba7bd46f22d19dfb52356090293942"
+      sha256 "ec904f6028f2abe88f8d404a801f28fc35f5ef007148bad8ad9d692fa963a56f"
 
       def install
         bin.install "climbr"
