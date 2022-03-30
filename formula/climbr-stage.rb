@@ -8,7 +8,7 @@ class Climbr < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/blazsolar/climbr-cli/releases/download/v0.4/climbr.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      url "https://github.com/blazsolar/climbr-cli/releases/download/v0.4/climbr-stage.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
       sha256 "d035ef3ef8b8a55abaaa19580d3348e453ba7bd46f22d19dfb52356090293942"
 
       def install
