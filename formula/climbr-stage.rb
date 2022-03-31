@@ -1,6 +1,6 @@
 require_relative "../lib/custom_download_strategy"
 
-class Climbr < Formula
+class ClimbrStage < Formula
   desc "CLI interface for climbr app"
   homepage "https://github.com/blazsolar/climbr-cli"
   head "https://github.com/blazsolar/climbr-cli.git"
