@@ -12,7 +12,7 @@ class ClimbrStage < Formula
       sha256 "0e550f55fabfec80a3529aa6113bfde032f8877d56adf6b1b8222ab626ea02fe"
 
       def install
-        bin.install "climbr"
+        bin.install "climbr-stage"
       end
     end
 #    if Hardware::CPU.intel?

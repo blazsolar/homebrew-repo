@@ -12,7 +12,7 @@ class ClimbrDev < Formula
       sha256 "ec904f6028f2abe88f8d404a801f28fc35f5ef007148bad8ad9d692fa963a56f"
 
       def install
-        bin.install "climbr"
+        bin.install "climbr-dev"
       end
     end
 #    if Hardware::CPU.intel?
