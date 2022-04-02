@@ -4,12 +4,12 @@ class ClimbrStage < Formula
   desc "CLI interface for climbr app"
   homepage "https://github.com/blazsolar/climbr-cli"
   head "https://github.com/blazsolar/climbr-cli.git"
-  version "0.5"
+  version "0.6"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/blazsolar/climbr-cli/releases/download/v0.5/climbr-stage.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "655855f57ec893542fecc938af966c1b66cfcda7598762eae491f0bc43f6081c"
+      url "https://github.com/blazsolar/climbr-cli/releases/download/v0.6/climbr-stage.tar.gz", :using => GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c209c9f8699dfbe05ce29073f69097701561fc8f4bc3d851d7aa87ae9ac32661"
 
       def install
         bin.install "climbr-stage"
@@ -26,6 +26,6 @@ class ClimbrStage < Formula
   end
   
   test do
-    assert_match "climbr 0.5", shell_output("#{bin}/climbr --version", 2)
+    assert_match "climbr 0.6", shell_output("#{bin}/climbr --version", 2)
   end
 end
