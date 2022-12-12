@@ -122,7 +122,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-      gh release download -p download_url -D temporary_path
+      system("gh release download -p download_url -D temporary_path")
     # HTTP request header `Accept: application/octet-stream` is required.
     # Without this, the GitHub API will respond with metadata, not binary.
     #curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}", to: temporary_path
