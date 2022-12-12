@@ -125,6 +125,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
             ]
         )
 
+    ohia result
 
 #      system "gh release download -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}"
     # HTTP request header `Accept: application/octet-stream` is required.
