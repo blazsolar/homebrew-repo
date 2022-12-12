@@ -123,7 +123,10 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
             ""
         }
 
-      result = system_command gh
+      result = system_command gh,
+        args: [
+            'release', 'download', '-R', "#{@owner}/#{@repo}", tag, '-p', filename, '-O', temporary_path
+        ]
 
 
 #      system "gh release download -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}"
