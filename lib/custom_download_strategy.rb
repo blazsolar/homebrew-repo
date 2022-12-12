@@ -69,7 +69,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-      dh api download_url > temporary_path
+      system("dh api download_url > temporary_path")
     #curl_download download_url, to: temporary_path
   end
 
