@@ -51,7 +51,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   def initialize(url, name, version, **meta)
     super
     parse_url_pattern
-    #set_github_token
+    set_github_token
   end
 
   def parse_url_pattern
@@ -69,8 +69,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-      dh api download_url > temporary_path
-    #curl_download download_url, to: temporary_path
+    curl_download download_url, to: temporary_path
   end
 
   def set_github_token
