@@ -114,16 +114,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     _, @owner, @repo, @tag, @filename = *@url.match(url_pattern)
   end
 
-  def download_url
-#    "https://api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
-    "#{asset_id}"
-  end
-
   private
 
   def _fetch(url:, resolved_url:, timeout:)
-      ohai "gh release download -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}"
-      system("gh release download -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}")
+      ohai "gh release download -v -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}"
+      system("gh release download -v -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}")
     # HTTP request header `Accept: application/octet-stream` is required.
     # Without this, the GitHub API will respond with metadata, not binary.
     #curl_download download_url, "--header", "Accept: application/octet-stream", "--header", "Authorization: token #{@github_token}", to: temporary_path
