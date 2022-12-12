@@ -119,7 +119,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   def _fetch(url:, resolved_url:, timeout:)
       ohai "gh release download -R #{@owner}/#{@repo} #{@tag} -p #{@filename} -O #{@temporary_path}",
 
-      result = system_command('gh',
+        result = system_command('/opt/homebrew/bin/gh',
             args: [
                 'release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path
             ]
