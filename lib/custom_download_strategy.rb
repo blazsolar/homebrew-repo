@@ -19,8 +19,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     def gh_executable
         formula = Formula["gh"]
 
-        ohai formula.
-
         @gh ||= [
             ENV["HOMEBREW_GH"],
             which("gh"),
@@ -28,6 +26,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c|
+            ohai c
             Pathname(c)
         }.find(&:executable?)
         raise "No executable `gh` was found" unless @gh
