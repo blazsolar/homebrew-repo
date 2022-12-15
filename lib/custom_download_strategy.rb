@@ -20,7 +20,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         @gh ||= [
             ENV["HOMEBREW_GH"],
             which("gh"),
-            Formula["gh"].latest_installed_prefix,
+            Formula["gh"].latest_installed_prefix + "/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
