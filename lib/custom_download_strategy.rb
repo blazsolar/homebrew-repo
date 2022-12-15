@@ -84,7 +84,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
             gh_executable,
             args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
             must_succeed: true
-        )?.success?
+        )
 
         ohai "Result"
         ohai result
