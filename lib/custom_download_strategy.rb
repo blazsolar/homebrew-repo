@@ -22,7 +22,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         @gh ||= [
         #            ENV["HOMEBREW_GH"],
          #   which("gh"),
-         "#{formula.latest_installed_prefix + }/bin/gh",
+         "#{formula.latest_installed_prefix}/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c|
