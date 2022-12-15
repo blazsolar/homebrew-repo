@@ -19,7 +19,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     def gh_executable
         formula = Formula["gh"]
 
-ohai Pathname("#{formula.latest_installed_prefix}/bin/gh").executable?
+        ohai formula.
 
         @gh ||= [
             ENV["HOMEBREW_GH"],
@@ -27,7 +27,10 @@ ohai Pathname("#{formula.latest_installed_prefix}/bin/gh").executable?
             formula.latest_installed_prefix + "/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
-        ].compact.map { |c| Pathname(c) }.find(&:executable?)
+        ].compact.map {
+        ohai c
+            |c| Pathname(c)
+        }.find(&:executable?)
         raise "No executable `gh` was found" unless @gh
 
         @gh
