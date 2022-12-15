@@ -85,7 +85,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
         ohai "#{HOMEBREW_PREFIX}"
         ohai "Prefix"
-        ohai Formula["gh"].latest_head_prefix
+        ohai Formula["gh"].any_version_installed
+        ohai Formula["gh"].latest_installed_prefix
         ohai "Fetch"
         ohai gh_executable
         result = system_command(
