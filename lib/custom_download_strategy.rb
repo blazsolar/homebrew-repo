@@ -49,7 +49,8 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
             args: ['api', @download_url, '>', @temporary_path]
         )
 
-        print result
+        ohai "Result"
+        ohai result
     end
     
 end
@@ -80,7 +81,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
             args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path]
         )
 
-        print result
+        ohai "Result"
+        ohai result
     end
 
   def asset_id
