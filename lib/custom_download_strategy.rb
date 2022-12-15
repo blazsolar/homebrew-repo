@@ -81,12 +81,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
     def _fetch(url:, resolved_url:, timeout:)
 
-        raise CurlDownloadStrategyError, url unless Formula["curl"].any_version_installed?
+        raise CurlDownloadStrategyError, url unless Formula["gh"].any_version_installed?
 
         ohai "#{HOMEBREW_PREFIX}"
 
-        ohai Formula["curl"]
-
+        ohai Formula["gh"],latest_head_prefix
         ohai "Fetch"
         ohai gh_executable
         result = system_command(
