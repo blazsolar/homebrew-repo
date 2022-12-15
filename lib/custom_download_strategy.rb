@@ -8,7 +8,7 @@ require "download_strategy"
 # strategy is suitable for corporate use just like S3DownloadStrategy, because
 # it lets you use a private GitHub repository for internal distribution.  It
 # works with public one, but in that case simply use CurlDownloadStrategy.
-class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
+class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     require "utils/formatter"
 
     def initialize(url, name, version, **meta)
@@ -29,19 +29,19 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
     end
 
 
-  def parse_url_pattern
-    unless match = url.match(%r{https://github.com/([^/]+)/([^/]+)/(\S+)})
-      raise CurlDownloadStrategyError, "Invalid url pattern for GitHub Repository."
+    def parse_url_pattern
+        unless match = url.match(%r{https://github.com/([^/]+)/([^/]+)/(\S+)})
+        raise CurlDownloadStrategyError, "Invalid url pattern for GitHub Repository."
     end
 
     _, @owner, @repo, @filepath = *match
   end
 
-  def download_url
-    "https://#{@github_token}@github.com/#{@owner}/#{@repo}/#{@filepath}"
-  end
+    def download_url
+        "https://#{@github_token}@github.com/#{@owner}/#{@repo}/#{@filepath}"
+    end
 
-  private
+    private
 
     def _fetch(url:, resolved_url:, timeout:)
         ohai "Fetch 1"
