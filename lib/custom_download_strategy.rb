@@ -20,8 +20,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         formula = Formula["gh"]
 
         @gh ||= [
-            ENV["HOMEBREW_GH"],
-            which("gh"),
+        #            ENV["HOMEBREW_GH"],
+         #   which("gh"),
             formula.latest_installed_prefix + "/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
