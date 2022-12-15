@@ -82,6 +82,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   private
 
     def _fetch(url:, resolved_url:, timeout:)
+
+ohai "#{HOMEBREW_PREFIX}"
+ohai HOMEBREW_SHIMS_PATH
+
+
         ohai "Fetch"
         ohai gh_executable
         result = system_command(
