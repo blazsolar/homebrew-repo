@@ -27,7 +27,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c|
         ohai "Test #{c}"
-            Pathname(c)
+            Pathname(c) 
         }.find(&:executable?)
         raise "No executable `gh` was found" unless @gh
 
