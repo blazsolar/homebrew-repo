@@ -44,8 +44,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     private
 
     def _fetch(url:, resolved_url:, timeout:)
-        ohai "#{HOMEBREW_PREFIX}"
-        ohai HOMEBREW_SHIMS_PATH
+        #        ohai "#{HOMEBREW_PREFIX}"
+        # ohai HOMEBREW_SHIMS_PATH
 
         ohai "Fetch 1"
         ohai gh_executable
