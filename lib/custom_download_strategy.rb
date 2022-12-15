@@ -27,9 +27,9 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             formula.latest_installed_prefix + "/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
-        ].compact.map {
-        ohai c
-            |c| Pathname(c)
+        ].compact.map { |c|
+            ohai c
+            Pathname(c)
         }.find(&:executable?)
         raise "No executable `gh` was found" unless @gh
 
