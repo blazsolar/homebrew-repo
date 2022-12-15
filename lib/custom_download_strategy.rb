@@ -82,7 +82,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
         ohai gh_executable
         result = system_command(
             gh_executable,
-            args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
+            args: ['release', 'downsdload', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
             must_succeed: true
         )
 
