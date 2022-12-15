@@ -48,6 +48,8 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
             gh_executable,
             args: ['api', @download_url, '>', @temporary_path]
         )
+
+        print result
     end
     
 end
@@ -77,6 +79,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
             gh_executable,
             args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path]
         )
+
+        print result
     end
 
   def asset_id
