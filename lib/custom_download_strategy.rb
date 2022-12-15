@@ -43,13 +43,13 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
 
   private
 
-  def _fetch(url:, resolved_url:, timeout:)
-      result = system_command(
-        gh_executable
-        args: ['api', @download_url, '>', @temporary_path]
-      )
-  end
-
+    def _fetch(url:, resolved_url:, timeout:)
+        result = system_command(
+            gh_executable,
+            args: ['api', @download_url, '>', @temporary_path]
+        )
+    end
+    
 end
 
 # GitHubPrivateRepositoryReleaseDownloadStrategy downloads tarballs from GitHub
