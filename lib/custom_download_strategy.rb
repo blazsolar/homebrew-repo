@@ -44,6 +44,8 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
   private
 
     def _fetch(url:, resolved_url:, timeout:)
+        ohai "Fetch 1"
+        ohai gh_executable
         result = system_command(
             gh_executable,
             args: ['api', @download_url, '>', @temporary_path]
@@ -76,6 +78,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   private
 
     def _fetch(url:, resolved_url:, timeout:)
+        ohai "Fetch"
+        ohai gh_executable
         result = system_command(
             gh_executable,
             args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path]
