@@ -20,6 +20,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         @gh ||= [
             ENV["HOMEBREW_GH"],
             which("gh"),
+            Formula["gh"].latest_installed_prefix,
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
@@ -80,13 +81,6 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   private
 
     def _fetch(url:, resolved_url:, timeout:)
-
-        #   raise CurlDownloadStrategyError, url unless Formula["gh"].any_version_installed?
-
-        ohai "#{HOMEBREW_PREFIX}"
-        ohai "Prefix"
-        ohai Formula["gh"].any_version_installed?
-        ohai Formula["gh"].latest_installed_prefix
         ohai "Fetch"
         ohai gh_executable
         result = system_command(
