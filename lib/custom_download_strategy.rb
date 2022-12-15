@@ -45,14 +45,10 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     private
 
     def _fetch(url:, resolved_url:, timeout:)
-        #        ohai "#{HOMEBREW_PREFIX}"
-        # ohai HOMEBREW_SHIMS_PATH
-
-        ohai "Fetch 1"
-        ohai gh_executable
         result = system_command(
             gh_executable,
-            args: ['api', @download_url, '>', @temporary_path]
+            args: ['api', @download_url, '>', @temporary_path],
+            must_succeed: true
         )
 
         ohai "Result"
@@ -86,8 +82,9 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
         ohai gh_executable
         result = system_command(
             gh_executable,
-            args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path]
-        )
+            args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
+            must_succeed: true
+        )?.success?
 
         ohai "Result"
         ohai result
