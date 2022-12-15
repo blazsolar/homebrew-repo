@@ -23,7 +23,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             which("gh"),
             "#{formula.latest_installed_prefix}/bin/gh",
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
-        raise "No executable `gh` was found" unless @gh
+        raise "No executable `gh` was found. You can install it with 'brew install gh'." unless @gh
 
         @gh
     end
