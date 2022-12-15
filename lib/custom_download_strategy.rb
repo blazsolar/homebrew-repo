@@ -20,7 +20,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         @gh ||= [
             ENV["HOMEBREW_GH"],
             which("gh"),
-            which("brew")
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
@@ -28,7 +27,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
 
         @gh
     end
-
 
     def parse_url_pattern
         unless match = url.match(%r{https://github.com/([^/]+)/([^/]+)/(\S+)})
@@ -45,6 +43,11 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     private
 
     def _fetch(url:, resolved_url:, timeout:)
+        #raise HomebrewCurlDownloadStrategyError, url unless Formula["curl"].any_version_installed?
+
+        ohai "#{HOMEBREW_PREFIX}"
+        ohai HOMEBREW_SHIMS_PATH
+
         ohai "Fetch 1"
         ohai gh_executable
         result = system_command(
