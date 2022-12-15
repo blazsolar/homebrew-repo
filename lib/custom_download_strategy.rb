@@ -19,7 +19,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     def gh_executable
         formula = Formula["gh"]
 
-        ohai formula.latest_installed_prefix + "/bin/gh"
+        ohai "#{formula.latest_installed_prefix}/bin/gh"
 
         @gh ||= [
             ENV["HOMEBREW_GH"],
