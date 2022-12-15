@@ -43,8 +43,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     private
 
     def _fetch(url:, resolved_url:, timeout:)
-        #raise HomebrewCurlDownloadStrategyError, url unless Formula["curl"].any_version_installed?
-
         ohai "#{HOMEBREW_PREFIX}"
         ohai HOMEBREW_SHIMS_PATH
 
@@ -83,9 +81,11 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
     def _fetch(url:, resolved_url:, timeout:)
 
-ohai "#{HOMEBREW_PREFIX}"
-ohai HOMEBREW_SHIMS_PATH
+        raise CurlDownloadStrategyError, url unless Formula["curl"].any_version_installed?
 
+        ohai "#{HOMEBREW_PREFIX}"
+
+        ohai Formula["curl"]
 
         ohai "Fetch"
         ohai gh_executable
