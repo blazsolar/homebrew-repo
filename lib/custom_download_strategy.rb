@@ -18,8 +18,8 @@ class GitHubPrivateRepositoryDownloadStrategy < AbstractFileDownloadStrategy
 
     def gh_executable
         @gh ||= [
-            ENV["HOMEBREW_CURL"],
-            which("curl"),
+            ENV["HOMEBREW_GH"],
+            which("gh"),
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
