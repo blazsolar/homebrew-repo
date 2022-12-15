@@ -22,8 +22,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             ENV["HOMEBREW_GH"],
             which("gh"),
             "#{formula.latest_installed_prefix}/bin/gh",
-            #"/usr/bin/curl",
-            #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
         raise "No executable `gh` was found" unless @gh
 
@@ -50,9 +48,6 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
             args: ['api', @download_url, '>', @temporary_path],
             must_succeed: true
         )
-
-        ohai "Result"
-        ohai result
     end
     
 end
@@ -82,12 +77,9 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
         ohai gh_executable
         result = system_command(
             gh_executable,
-            args: ['release', 'downsdload', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
+            args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path],
             must_succeed: true
         )
-
-        ohai "Result"
-        ohai result
     end
 
   def asset_id
