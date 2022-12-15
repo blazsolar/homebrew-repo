@@ -84,8 +84,8 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
         raise CurlDownloadStrategyError, url unless Formula["gh"].any_version_installed?
 
         ohai "#{HOMEBREW_PREFIX}"
-
-        ohai Formula["gh"],latest_head_prefix
+        ohai "Prefix"
+        ohai Formula["gh"].latest_head_prefix
         ohai "Fetch"
         ohai gh_executable
         result = system_command(
