@@ -17,10 +17,14 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     end
 
     def gh_executable
+        formula = Formula["gh"]
+
+        ohai formula.latest_installed_prefix
+
         @gh ||= [
             ENV["HOMEBREW_GH"],
             which("gh"),
-            Formula["gh"].latest_installed_prefix + "/bin/gh",
+            formula.latest_installed_prefix + "/bin/gh",
             #"/usr/bin/curl",
             #"/opt/homebrew/bin/gh"
         ].compact.map { |c| Pathname(c) }.find(&:executable?)
