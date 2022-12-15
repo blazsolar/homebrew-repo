@@ -72,12 +72,12 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
 
   private
 
-  def _fetch(url:, resolved_url:, timeout:)
+    def _fetch(url:, resolved_url:, timeout:)
         result = system_command(
-            '/opt/homebrew/bin/gh',
+            gh_executable,
             args: ['release', 'download', '-R', "#{@owner}/#{@repo}", @tag, '-p', @filename, '-O', @temporary_path]
         )
-  end
+    end
 
   def asset_id
     @asset_id ||= resolve_asset_id
